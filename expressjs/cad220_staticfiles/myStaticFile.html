@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Express Static Demo</title>
+  <!-- Serve a CSS file from /css/style.css -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Express Static File Serving</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Welcome!</h2>
+      <p>
+        This page is being served as a static file by Express.
+        You should see styles, an image, and interactive JavaScript all loaded from your static folder.
+      </p>
+      <!-- Serve an image from /images/logo.png -->
+      <img src="/images/logo.png" alt="Logo" width="200" />
+    </section>
+
+    <section>
+      <h2>Dynamic Content via JS</h2>
+      <button id="timeBtn">Show Current Time</button>
+      <p id="timeDisplay"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Demo App</p>
+  </footer>
+
+  <!-- Serve a JS file from /js/main.js -->
+  <script src="/js/main.js"></script>
+</body>
+</html>
