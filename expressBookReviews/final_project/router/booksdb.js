@@ -22,7 +22,10 @@ const books = [
         isbn: "4",
         author: "Unknown",
         title: "The Epic Of Gilgamesh",
-        reviews: {}
+        reviews: {
+            1: 'good book',
+            2: 'very good book'
+        }
       },
       {
         isbn: "5",
