@@ -66,10 +66,10 @@ public_users.get('/review/:isbn',function (req, res) {
 
 module.exports.general = public_users;
 
-// fetch book list via axios
-
+// call axios
 const axios = require('axios');
 
+// get books with promise
 function fetchBooksWithPromises() {
   axios.get('http://localhost:5000/')
   .then(response => {
@@ -79,7 +79,8 @@ function fetchBooksWithPromises() {
     console.error('Error fetching books:', err.message);
   });
 }
-// using async/await
+
+// get books with  async/await
 async function fetchBooksAsync() {
   try {
     const response = await axios.get('http://localhost:5000/');
@@ -88,6 +89,86 @@ async function fetchBooksAsync() {
     console.error('Error fetching books:', err.message);
   }
 }
+
+// get book by isbn with promise
+function fetchBookByIsbnWithPromise(isbn) {
+  axios.get(`http://localhost:5000/isbn/${isbn}`)
+  .then(response => {
+    console.log(`Books with isbn with Promise: ${isbn}: `,
+      response.data);
+  })
+  .catch(err => {
+    console.error(`Error fetching ISBN ${isbn}`, err.message);
+  });
+}
+
+// get book by isbn with async
+async function fetchBookByIsbnWithAsync(isbn) {
+  try {
+    const response = await axios.get(`http://localhost:5000/isbn/${isbn}`);
+    console.log(`Book with isbn ${isbn} with Async/await: `,
+      response.data);
+  } catch (err) {
+    console.error(`Error fetching ISBN ${isbn}: `, err.message);
+  }
+}
+
+// get book by author with promise
+function fetchBookByAuthorWithPromise(author) {
+  axios.get(`http://localhost:5000/author/${author}`) // url
+  .then(response => {
+    console.log(`Result with promise for author: ${author}: `,
+      response.data);
+  })
+  .catch(err => {
+    console.error(`Error while getting by author ${author} with Promise: `,
+      err.message);
+  })
+}
+
+// get book by author with async/wait
+async function fetchBookByAuthorWithAsync(author) {
+  try {
+    const response = await axios.get(`http://localhost:5000/author/${author}`);
+    console.log(`Result for author ${author} with async/await: `,
+      response.data);
+  } catch (err) {
+    console.error(`Error: while getting for author ${author} with async/await: `,
+      err.message);
+  }
+}
+
+// get book by title with promise
+function fetchBookByTitleWithPromise(title) {
+  axios.get(`http://localhost:5000/title/${title}`)
+  .then(response => {
+    console.log(`By title with promise: `,
+      response.data)
+  })
+  .catch(err => {
+    console.error(`Error while getting by title with promise: `,
+      err.message);
+  })
+}
+
+// get book by title with async/await
+async function fetchBookByTitleWithAsync(title) {
+  try{
+    const response = await axios.get(`http://localhost:5000/title/${title}`);
+    console.log(`Result with async by title:`,
+      response.data);
+  } catch (err) {
+    console.error(`Error while getting by title with async: `,
+      err.message);
+  }
+}
+
 // invoke
 fetchBooksWithPromises();
 fetchBooksAsync();
+fetchBookByIsbnWithPromise(3);
+fetchBookByIsbnWithAsync(4);
+fetchBookByAuthorWithPromise("Jane Austen");
+fetchBookByAuthorWithAsync("Dante Alighieri");
+fetchBookByTitleWithPromise("The Book Of Job");
+fetchBookByTitleWithAsync("The Epic Of Gilgamesh");
